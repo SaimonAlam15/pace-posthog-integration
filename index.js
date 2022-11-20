@@ -1,22 +1,20 @@
-// <TODO: your plugin code here - you can base it on the code below, but you don't have to>
+export function onEvent(event, meta) {
+    var api_key = meta.config.api_key
+    var raw = JSON.stringify({
+        data: event,
+    })
 
-// Some internal library function
-async function getRandomNumber() {
-    return 4
-}
-
-// Plugin method that runs on plugin load
-export async function setupPlugin({ config }) {
-    console.log(`Setting up the plugin`)
-}
-
-// Plugin method that processes event
-export async function processEvent(event, { config, cache }) {
-    const counterValue = (await cache.get('greeting_counter', 0))
-    cache.set('greeting_counter', counterValue + 1)
-    if (!event.properties) event.properties = {}
-    event.properties['greeting'] = config.greeting
-    event.properties['greeting_counter'] = counterValue
-    event.properties['random_number'] = await getRandomNumber()
-    return event
+    var requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': api_key,
+        },
+        body: raw,
+        redirect: 'follow',
+    }
+    fetch('https://data.production.paceapp.com/events', requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.error('error', error))
 }

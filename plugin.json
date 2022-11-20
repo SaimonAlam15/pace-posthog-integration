@@ -1,19 +1,21 @@
 {
-    "name": "<TODO: your plugin name>",
-    "url": "<TODO: Your Plugin URL here>",
-    "description": "<TODO: Your Plugin description here>",
+    "name": "Pace Integration",
+    "url": "https://www.paceapp.com/",
+    "description": "Pace is a tool that equips sellers with relevant insights at the right time so they can spend time growing revenue. It allows them to convert, retain, and grow customers by prioritizing time and effort on the users who need it most.",
     "main": "index.js",
     "posthogVersion": ">= 1.25.0",
     "config": [
         {
-            "markdown": "<TODO: your plugin config, remove if none>"
+            "markdown": "Specify your config here"
         },
         {
-            "key": "greeting",
-            "name": "What greeting would you like to use?",
+            "key": "api_key",
+            "name": "API Key",
             "type": "string",
-            "default": "Hello World!",
-            "required": false
+            "hint": "API key provided by Pace.",
+            "default": "",
+            "required": true,
+            "secret": true
         }
     ]
 }
