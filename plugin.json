@@ -6,9 +6,6 @@
     "posthogVersion": ">= 1.25.0",
     "config": [
         {
-            "markdown": "Specify your config here"
-        },
-        {
             "key": "api_key",
             "name": "API Key",
             "type": "string",

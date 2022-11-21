@@ -1,6 +1,6 @@
-export function onEvent(event, meta) {
-    var api_key = meta.config.api_key
-    var raw = JSON.stringify({
+export async function exportEvents(event, meta) {
+    const api_key = meta.config.api_key
+    const raw = JSON.stringify({
         data: event,
     })
 
@@ -15,6 +15,5 @@ export function onEvent(event, meta) {
     }
     fetch('https://data.production.paceapp.com/events', requestOptions)
         .then((response) => response.text())
-        .then((result) => console.log(result))
-        .catch((error) => console.error('error', error))
+        .catch((error) => console.error('error:', error))
 }
