@@ -1,4 +1,4 @@
-export async function exportEvents(event, meta) {
+export async function onEvent(event, meta) {
     const api_key = meta.config.api_key
     const raw = JSON.stringify({
         data: event,
